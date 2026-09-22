@@ -85,6 +85,9 @@ class Calculator {
     this.operation = undefined;
     this.isErrorState = false;
     this.shouldResetScreen = false;
+    if (this.historyElement) {
+      this.historyElement.innerText = '';
+    }
     this.updateDisplay();
   }
 
@@ -131,6 +134,9 @@ class Calculator {
     if (this.shouldResetScreen) {
       this.currentOperand = '';
       this.shouldResetScreen = false;
+      if (this.historyElement && !this.operation) {
+        this.historyElement.innerText = '';
+      }
     }
 
     if (number === '.') {
