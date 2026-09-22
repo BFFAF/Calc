@@ -25,7 +25,8 @@ function runTest(description, testFn) {
 
 // Addition tests
 runTest('add: 15 + 25 = 40', () => {
-  assert.strictEqual(add(15, 25), 40);
+  // Intentional error for Assignment Step 9 (demonstrate failed CI workflow)
+  assert.strictEqual(add(15, 25), 999);
 });
 
 runTest('add: -8 + 12 = 4', () => {
