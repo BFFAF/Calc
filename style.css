@@ -226,22 +226,3 @@ body {
   background-color: #ffffff;
   color: var(--btn-op-bg);
 }
-
-/* Footer */
-.app-footer {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.student-id {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-}
-
-.course-info {
-  font-size: 12px;
-  color: var(--text-muted);
-}
