@@ -1,0 +1,247 @@
+/* =========================================================
+   Calculator
+   Muhammad Affaf Abdullah (FA25-BCS-003)
+   COMSATS University Islamabad, Wah Campus
+   Typography: Mathematical Typeface (STIX Two Text & Cambria Math)
+   ========================================================= */
+
+:root {
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-math: "STIX Two Text", "Cambria Math", "Latin Modern Math", "Times New Roman", serif;
+
+  --bg-page: #121316;
+  --bg-chassis: #1c1d22;
+  --border-chassis: #2c2e35;
+  
+  --bg-screen: #101114;
+  --border-screen: #23252b;
+  
+  --text-primary: #f4f4f6;
+  --text-secondary: #8b8e98;
+  --text-muted: #5e616c;
+  
+  --btn-num-bg: #26282f;
+  --btn-num-hover: #30333b;
+  --btn-num-active: #1e2025;
+  --btn-num-text: #f4f4f6;
+  
+  --btn-util-bg: #353842;
+  --btn-util-hover: #404450;
+  --btn-util-active: #2a2c34;
+  --btn-util-text: #e2e4ea;
+  
+  --btn-op-bg: #ea580c;
+  --btn-op-hover: #f97316;
+  --btn-op-active: #c2410c;
+  --btn-op-text: #ffffff;
+  
+  --radius-chassis: 16px;
+  --radius-screen: 10px;
+  --radius-btn: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+/* App Container */
+.calculator-app {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+}
+
+/* Header */
+.app-header {
+  text-align: center;
+}
+
+.app-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+/* Calculator Body */
+.calculator {
+  background: var(--bg-chassis);
+  border: 1px solid var(--border-chassis);
+  border-radius: var(--radius-chassis);
+  padding: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Screen */
+.display {
+  background: var(--bg-screen);
+  border: 1px solid var(--border-screen);
+  border-radius: var(--radius-screen);
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100px;
+}
+
+.display-history {
+  min-height: 22px;
+  font-family: var(--font-math);
+  font-size: 16px;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  color: var(--text-secondary);
+  text-align: right;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  letter-spacing: 0.02em;
+}
+
+.display-history::-webkit-scrollbar {
+  display: none;
+}
+
+.display-current {
+  min-height: 50px;
+  font-family: var(--font-math);
+  font-size: 42px;
+  font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  color: var(--text-primary);
+  text-align: right;
+  line-height: 1.25;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  letter-spacing: 0.01em;
+}
+
+.display-current::-webkit-scrollbar {
+  display: none;
+}
+
+/* Keypad Grid */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Buttons */
+.btn {
+  height: 56px;
+  border-radius: var(--radius-btn);
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 120ms ease, border-color 120ms ease;
+  outline: none;
+}
+
+.btn:focus-visible {
+  border-color: #f97316;
+}
+
+/* Number Keys */
+.btn-num {
+  font-family: var(--font-math);
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  font-size: 22px;
+  font-weight: 500;
+  background-color: var(--btn-num-bg);
+  color: var(--btn-num-text);
+  border-color: #32353e;
+}
+
+.btn-num:hover {
+  background-color: var(--btn-num-hover);
+}
+
+.btn-num:active,
+.btn-num.active-key {
+  background-color: var(--btn-num-active);
+}
+
+/* Utility Keys (AC, C, ⌫, ±) */
+.btn-util {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 600;
+  background-color: var(--btn-util-bg);
+  color: var(--btn-util-text);
+  border-color: #424652;
+}
+
+.btn-util:hover {
+  background-color: var(--btn-util-hover);
+}
+
+.btn-util:active,
+.btn-util.active-key {
+  background-color: var(--btn-util-active);
+}
+
+/* Operator Keys (÷, ×, −, +, =) */
+.btn-op {
+  font-family: var(--font-math);
+  font-size: 24px;
+  font-weight: 500;
+  background-color: var(--btn-op-bg);
+  color: var(--btn-op-text);
+}
+
+.btn-op:hover {
+  background-color: var(--btn-op-hover);
+}
+
+.btn-op:active,
+.btn-op.active-key {
+  background-color: var(--btn-op-active);
+}
+
+.btn-op.selected-op {
+  background-color: #ffffff;
+  color: var(--btn-op-bg);
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.student-id {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.course-info {
+  font-size: 12px;
+  color: var(--text-muted);
+}
