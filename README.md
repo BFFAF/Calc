@@ -1,6 +1,6 @@
 # Simple Calculator
 
-Software Engineering (BCS 3A/3B) &mdash; Assignment 01  
+Software Engineering (BCS 3A) &mdash; Assignment 01  
 COMSATS University Islamabad, Wah Campus  
 Student: Muhammad Affaf Abdullah (FA25-BCS-003)  
 
